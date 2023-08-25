@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: chat
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: chat
+        version: v1
+    spec:
+      containers:
+        - image: graphql-go-tools-chat
+          imagePullPolicy: Never
+          name: chat
+          ports:
+            - containerPort: 8085
